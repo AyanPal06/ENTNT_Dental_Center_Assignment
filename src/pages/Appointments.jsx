@@ -94,19 +94,6 @@ const Appointments = () => {
     });
   };
 
-  const handleFileUpload = (event, setIncident, incident) => {
-    const files = Array.from(event.target.files);
-    const newFiles = files.map(file => ({
-      name: file.name,
-      url: URL.createObjectURL(file)
-    }));
-    
-    setIncident({
-      ...incident,
-      files: [...incident.files, ...newFiles]
-    });
-  };
-
   const getStatusColor = (status) => {
     switch (status) {
       case 'Completed':
@@ -146,7 +133,6 @@ const Appointments = () => {
               setIncident={setNewIncident}
               onSubmit={handleAddIncident}
               submitText="Create Appointment"
-              handleFileUpload={handleFileUpload}
             />
           </DialogContent>
         </Dialog>
@@ -257,7 +243,6 @@ const Appointments = () => {
               setIncident={setSelectedIncident}
               onSubmit={handleEditIncident}
               submitText="Update Appointment"
-              handleFileUpload={handleFileUpload}
             />
           )}
         </DialogContent>
