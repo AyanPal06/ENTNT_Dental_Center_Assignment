@@ -11,6 +11,7 @@ import Layout from "./components/Layout";
 import Patients from "./pages/Patients";
 import Appointments from "./pages/Appointments";
 import Calendar from "./pages/Calendar";
+import PatientView from "./pages/PatientView";
 
 const queryClient = new QueryClient();
 
@@ -52,8 +53,13 @@ const App = () => (
                 </Layout>
               </ProtectedRoute>
             } />
-
-
+            <Route path="/my-appointments" element={
+              <ProtectedRoute requiredRole="Patient">
+                <Layout>
+                  <PatientView />
+                </Layout>
+              </ProtectedRoute>
+            } />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
