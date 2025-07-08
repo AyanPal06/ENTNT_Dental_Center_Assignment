@@ -9,6 +9,8 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
 import Patients from "./pages/Patients";
+import Appointments from "./pages/Appointments";
+import Calendar from "./pages/Calendar";
 
 const queryClient = new QueryClient();
 
@@ -32,6 +34,21 @@ const App = () => (
               <ProtectedRoute requiredRole="Admin">
                 <Layout>
                   <Patients />
+                </Layout>
+              </ProtectedRoute>
+            } />
+
+             <Route path="/appointments" element={
+              <ProtectedRoute requiredRole="Admin">
+                <Layout>
+                  <Appointments />
+                </Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/calendar" element={
+              <ProtectedRoute requiredRole="Admin">
+                <Layout>
+                  <Calendar />
                 </Layout>
               </ProtectedRoute>
             } />
