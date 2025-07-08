@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./components/Layout";
+import Patients from "./pages/Patients";
 
 const queryClient = new QueryClient();
 
@@ -27,7 +28,15 @@ const App = () => (
                 </Layout>
               </ProtectedRoute>
             } />
-            
+            <Route path="/patients" element={
+              <ProtectedRoute requiredRole="Admin">
+                <Layout>
+                  <Patients />
+                </Layout>
+              </ProtectedRoute>
+            } />
+
+
           </Routes>
         </BrowserRouter>
       </AuthProvider>
